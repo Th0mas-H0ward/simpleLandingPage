@@ -1,0 +1,412 @@
+/*-----------------------------------*\
+  #style.css
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  #CUSTOM PROPERTY
+\*-----------------------------------*/
+
+:root {
+
+  /* COLORS */
+  --color-primary: #808080;
+  --color-text-shadow: rgba(0, 0, 0, 0.8);
+  --color-footer-bg: #1b1b1b;
+  --color-footer-text: #999999;
+
+  /* TYPOGRAPHY */
+  --font-primary: 'Fjalla One', sans-serif;
+  --font-brand: 'Merienda', cursive;
+
+  /* SPACING */
+  --spacing-section: 3rem;
+  --spacing-header: 3.5rem;
+
+  /* DIMENSIONS */
+  --header-height: 56px;
+  --carousel-height: 70vh;
+  --gallery-image-size: 10rem;
+  --social-icon-size: 37px;
+}
+
+/*-----------------------------------*\
+  #RESET
+\*-----------------------------------*/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a,
+img,
+span,
+iframe,
+button {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+input,
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  text-align: left;
+  cursor: pointer;
+}
+
+html {
+  font-family:  var(--font-primary);
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.5;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+section {
+  scroll-margin-top: var(--header-height);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/*-----------------------------------*\
+  #ACCESSIBILITY
+\*-----------------------------------*/
+
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 1rem;
+  background: var(--color-primary);
+  color: white;
+  padding: 0.5rem;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*-----------------------------------*\
+  #HEADER
+\*-----------------------------------*/
+
+.navbar {
+  z-index: 50;
+}
+
+.navbar .navbar-brand {
+  font-family: var(--font-brand);
+  font-size: 1.5rem;
+}
+
+/*-----------------------------------*\
+  #MAIN
+\*-----------------------------------*/
+
+main {
+  padding-top: var(--spacing-header);
+}
+
+h1 {
+  padding-bottom: 1rem;
+}
+
+/**
+* CAROUSEL
+*/
+
+.carousel-item {
+  position: relative;
+}
+
+/* Radial gradient for a vignette */
+
+.carousel-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  z-index: 1;
+}
+
+/* Additional shadowing */
+
+.carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.carousel-item img {
+  height: var(--carousel-height);
+  object-fit: cover;
+}
+
+.carousel-caption {
+  background: none;
+  top: 25%;
+  padding: 0 2rem;
+}
+
+.carousel-caption {
+  z-index: 2; 
+  text-shadow: 0 2px 4px var(--color-text-shadow);
+}
+
+.carousel-caption .btn {
+  margin-top: 1rem;
+}
+
+/**
+* SECTIONS
+*/
+
+.section-padding {
+  padding: var(--spacing-section) 0;
+}
+
+.content-section {
+  padding: 1rem 0;
+}
+
+#screenshots h2, #heading h2 {
+  padding-bottom: 1rem;
+}
+
+.divider {
+  background-image: url(../assests/images/slash.svg);
+  background-repeat: repeat-x;
+  height: 1rem;
+  width: 100%;
+}
+
+/**
+* GALLERY
+*/
+
+.gallery::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.gallery .col-md-2 {
+  float: left;
+  margin-bottom: 1rem;
+}
+
+.square-image {
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.square-image:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.gallery-item {
+  margin: 0 1rem;
+  transition: transform 0.2s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.5);
+}
+
+/**
+* FEATURES
+*/
+
+.feature-item {
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-item img {
+  margin: 0 auto;
+  max-width: 64px;
+}
+
+/*-----------------------------------*\
+  #FOOTER
+\*-----------------------------------*/
+
+.site-footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  padding: var(--spacing-section) 0;
+}
+
+.site-footer .col-md-12 {
+  text-align: center;
+}
+
+.subscription-form {
+  margin-top: 1rem;
+}
+
+.subscription-form input {
+  min-width: 200px;
+}
+
+/**
+* SOCIAL ICONS
+*/
+
+.social-links li {
+  width: var(--social-icon-size);
+  height: var(--social-icon-size);
+  overflow: hidden;
+}
+
+.social-links li a {
+  background-image: url(../assests/images/icons.png);
+  background-repeat: no-repeat;
+  width: calc(var(--social-icon-size) * 2);
+  height: calc(var(--social-icon-size) * 2);
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.social-links li a.facebook-icon{
+  background-position: -306px -472px;
+}
+
+.social-links li a.instagram-icon{
+  background-position: -902px -472px;
+}
+
+.social-links li a.google-icon{
+  background-position: -184px -472px;
+}
+
+.social-links li a:hover.facebook-icon {
+  background-position: -306px -232px;
+}
+
+.social-links li a:hover.instagram-icon {
+  background-position: -902px -232px;
+}
+
+.social-links li a:hover.google-icon {
+  background-position: -185px -232px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  :root {
+    --carousel-height: 50vh;
+    --spacing-section: 2rem;
+    --gallery-image-size: 8rem;
+  }
+
+  .carousel-caption {
+    top: 15%;
+    padding: 0 1rem;
+  }
+
+  .gallery .col-md-2 {
+    width: 33.33%; /* 3 images in a row */
+    padding: 0 0.5rem;
+  }
+  
+  /* Every 4th image will be shown from a new row */
+  .gallery .col-md-2:nth-child(3n+1) {
+    clear: left;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --gallery-image-size: 6.5rem;
+  }
+  
+  .carousel-caption h2 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-caption p {
+    font-size: 1rem;
+  }
+
+  .gallery .col-md-2 {
+    width: 50%; /* 2 images in a row */
+    padding: 0 0.25rem;
+  }
+  
+  /* It's important to reset the previous property */
+  .gallery .col-md-2:nth-child(3n+1) {
+    clear: none;
+  }
+  
+  /* Every 2nd image will be shown from a new row */
+  .gallery .col-md-2:nth-child(2n+1) {
+    clear: left;
+  }
+}
+
+@media (max-width: 320px) {
+  :root {
+    --gallery-image-size: 5rem;
+  }
+}
